@@ -41,7 +41,7 @@ app.post('/create_class', async (req, res) => {
         db.close();
     });
 
-    await axios.post('http://localhost:4009/events', {
+    await axios.post('http://localhost:3226/events', {
         type: 'ClassCreated',
         data: classId
     });
@@ -120,6 +120,6 @@ app.post('/events', async (req, res) => {
 });
 
 
-app.listen(4001, () => {
-    console.log('Classroom service listening at port 4001...');
+app.listen(3226, () => {
+    console.log('Classroom service listening at port 3226...');
 })

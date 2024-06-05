@@ -23,7 +23,7 @@ const Auth = (props) => {
   const tryLogin = async (e) => {
     e.preventDefault();
 
-    await axios.post('http://localhost:4000/login', {
+    await axios.post('http://localhost:1226/login', {
       email, password
     }).then((res) => {
       cookie.save('userId', res.data, { path: '/' })
@@ -39,7 +39,7 @@ const Auth = (props) => {
   const trySignup = async (e) => {
     e.preventDefault();
 
-    await axios.post('http://localhost:4000/signup', {
+    await axios.post('http://localhost:1226/signup', {
       email, username, password
     }).then((res) => {
       history.push('/login');

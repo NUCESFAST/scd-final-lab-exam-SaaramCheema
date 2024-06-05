@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodbclass
+    ports:
+      - "27017:27017"
+    networks:
+      - classroom-network
+    volumes:
+      - mongodb_data:/data/db
+
+  classroom-service:
+    build: .
+    container_name: classroom-service
+    ports:
+      - "4001:4001"
+    networks:
+      - classroom-network
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/ClassroomMS
+
+networks:
+  classroom-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
